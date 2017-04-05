@@ -1,0 +1,84 @@
+﻿<Window x:Class="WpfApplication1.Windows.New_species_window"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Nova vrsta prozor" Height="780" Width="530" ResizeMode="NoResize" >
+
+    <DockPanel >
+        <DockPanel DockPanel.Dock="Bottom">
+            <Button DockPanel.Dock="Left" Padding="5" Margin="5" IsCancel="True" Click="Odustani_clicked" Content="Odustani"/>
+            <Button DockPanel.Dock="Right" Padding="5" Margin="5" IsDefault="True" Click="Potvrdi_clicked" Content="Potvrdi"/>
+            <Separator DockPanel.Dock="Bottom"></Separator>
+        </DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" MinHeight="111" />
+                <RowDefinition Height="Auto" MinHeight="69" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Grid.Column="0" Grid.Row="0" Margin="10"><Run Text="Unesite jedinstveni kod:"/><LineBreak/></TextBlock>
+
+            <TextBlock Grid.Column="0" Margin="10,20,10,0" Text="Opis:" Grid.ColumnSpan="2" Grid.Row="1"/>
+            <TextBox Name="opis_text_box" HorizontalAlignment="Left" Height="70" Margin="10,42,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="492" Grid.ColumnSpan="2" ScrollViewer.VerticalScrollBarVisibility="Auto" />
+
+            <TextBox Name="id_textbox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="31,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" LostFocus="promenjen_fokus"/>
+            <TextBlock Name="Error_message" Grid.Column="1" HorizontalAlignment="Left" Margin="166,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Foreground="#FFFF1313" Height="33"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,53,0,0" TextWrapping="Wrap" Text="Ime:" VerticalAlignment="Top"/>
+            <TextBox Name="ime_text_box" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="23" Margin="46,53,0,0" Grid.RowSpan="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="251" TextChanged="TextBox_TextChanged_2"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,19,0,0" Grid.Row="2" TextWrapping="Wrap" Text="Tip:" VerticalAlignment="Top"/>
+            <ComboBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="90,19,0,0" Grid.Row="2" VerticalAlignment="Top" Width="126" Height="25" ItemsSource="{Binding Path=Tipovi}"  />
+            <Button Content="Dodaj novi tip" Grid.Column="1" HorizontalAlignment="Left" Margin="114,24,0,0" Grid.Row="2" VerticalAlignment="Top" Width="114" Click="dodaj_tip_clicked" RenderTransformOrigin="0.325,0.65"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,62,0,0" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Etiketa:"/></TextBlock>
+            <ComboBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="90,58,0,0" Grid.Row="2" VerticalAlignment="Top" Width="126" Height="24"/>
+            <Button Content="Dodaj novu etiketu" Grid.Column="1" HorizontalAlignment="Left" Margin="114,58,0,0" Grid.Row="2" VerticalAlignment="Top" Width="114" Click="dodaj_etiketu_clicked"/>
+            <ListBox Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="130" Margin="90,128,0,-86" Grid.Row="2" VerticalAlignment="Top" Width="175">
+                <ListBoxItem IsSelected="true">Kriticno ugrozena</ListBoxItem>
+                <ListBoxItem >Ugrozena</ListBoxItem>
+                <ListBoxItem>Ranjiva</ListBoxItem>
+                <ListBoxItem>Zavisna od ocuvanja stanista</ListBoxItem>
+                <ListBoxItem>Blizu rizika</ListBoxItem>
+                <ListBoxItem Height="20">Najmanji rizik</ListBoxItem>
+            </ListBox>
+            <TextBlock HorizontalAlignment="Left" Margin="10,128,0,56" Grid.Row="2" TextWrapping="Wrap" Width="75"><Run Text="Status "/><LineBreak/><Run Text="ugrozenosti:"/></TextBlock>
+            <GroupBox Grid.Column="1"  HorizontalAlignment="Left" Margin="124,128,0,-5" Grid.Row="2" VerticalAlignment="Top" Height="37" Width="232" Header="Da li je opasna za ljude">
+                <Grid>
+                <RadioButton GroupName="opasno_za_ljude" IsChecked="true" Content="ne" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="220"/>
+                <RadioButton Name="Opasna_za_ljude_da" GroupName="opasno_za_ljude" Content="da" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="220" Margin="95,0,-95,0"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Column="1"  HorizontalAlignment="Left" Margin="124,170,0,-37" Grid.Row="2" VerticalAlignment="Top" Height="37" Width="232" Header="da li je na IUCN crvenoj listi">
+                <Grid>
+                    <RadioButton GroupName="crvena_lista" IsChecked="true" Content="ne" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="220"/>
+                    <RadioButton Name="crvena_lista_da" GroupName="crvena_lista" Content="da" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="220" Margin="95,0,-95,0"/>
+                </Grid>
+            </GroupBox>
+            <GroupBox Grid.Column="1"  HorizontalAlignment="Left" Margin="124,212,0,-78" Grid.Row="2" VerticalAlignment="Top" Height="37" Width="232" Header="da li zivi u naseljenom regioni">
+                <Grid>
+                    <RadioButton GroupName="naseljeni_region" IsChecked="true" Content="ne" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="220"/>
+                    <RadioButton Name="naseljen_region_da" GroupName="naseljeni_region" Content="da" HorizontalAlignment="Left" Height="15" VerticalAlignment="Top" Width="220" Margin="95,0,-95,0"/>
+                </Grid>
+            </GroupBox>
+            <ComboBox Name="turisticki_status_cb" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="112,273,0,-42" Grid.Row="2" VerticalAlignment="Top" Width="120">
+                <ComboBoxItem IsSelected="true">Izolovana</ComboBoxItem>
+                <ComboBoxItem>Delimicno izolovana</ComboBoxItem>
+                <ComboBoxItem>Habituirana</ComboBoxItem>
+            </ComboBox>
+            <TextBlock HorizontalAlignment="Left" Margin="10,273,0,-73" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Text="Turisticki status:"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,320,0,-59" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Prihod od turizma:"/><LineBreak/><Run Text="(u dolarima $)"/></TextBlock>
+            <TextBlock Name="Error_prihod" Grid.Column="1" HorizontalAlignment="Left" Margin="143,333,0,-58" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="196" Foreground="Red"/>
+            <TextBox Name="prihod_textbox" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="17,333,0,-60" Grid.Row="2" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" TextChanged="TextBox_TextChanged_1"/>
+            <TextBlock Name="Error_ime" Grid.Column="1" HorizontalAlignment="Left" Margin="179,60,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="177" Foreground="Red"/>
+            <TextBlock HorizontalAlignment="Left" Margin="10,375,0,-74" Grid.Row="2" TextWrapping="Wrap" Text="Datum otkrivanja:" VerticalAlignment="Top"/>
+            <DatePicker Name="datum_b" Grid.Column="1" HorizontalAlignment="Left" Margin="17,375,0,-55" Grid.Row="2" VerticalAlignment="Top" FirstDayOfWeek="Monday" SelectedDate="1/1/2000"/>
+            <Image  Name="Ikonica" Grid.Column="1" HorizontalAlignment="Left" Height="100" Margin="31,413,0,-140" Grid.Row="2" VerticalAlignment="Top" Width="140" Source="../../Images/question-mark.jpg" />
+            <Button Content="Pronađi ikonicu" HorizontalAlignment="Left" Margin="46,413,0,-61" Grid.Row="2" VerticalAlignment="Top" Width="100" Click="pronadji_ikonicu_clicked"/>
+
+
+
+        </Grid>
+    </DockPanel>
+</Window>

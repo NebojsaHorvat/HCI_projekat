@@ -1,0 +1,56 @@
+﻿<Window x:Class="WpfApplication1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ugrozene vrste sveta" Height="700" Width="900">
+    <DockPanel> 
+        <Menu DockPanel.Dock="Top" HorizontalAlignment="Stretch" Height="21" VerticalAlignment="Top"  >
+            <MenuItem Header="Fajl" >
+                <MenuItem Header="Nova vrsta " Height="20" Width="Auto" Click="new_species_clicked"/>
+                <MenuItem Header="Novi tip" Height="20" Width="Auto" Click="Novi_tip_clicked"/>
+                <MenuItem Header="Nova etiketa" Height="20" Width="Auto" Click="Nova_etiketa_clicked"/>
+            </MenuItem>
+            <MenuItem Header="Izmeni" >
+                <ToolBar Height="100" Width="100"/>
+            </MenuItem>
+            <MenuItem Header="Pomoc"> 
+                
+            </MenuItem>
+        </Menu>
+     <DataGrid  DockPanel.Dock="Bottom" Height="200" Width="Auto" VerticalAlignment="Bottom"/>
+        <Menu Height="Auto" Width="62" HorizontalAlignment="Left">
+            <Button VerticalAlignment="Top" Height="64" Width="42">
+                <StackPanel>
+                    <Image Source="../../Images/New.png" />
+                    <TextBlock>Vrsta</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button VerticalAlignment="Top" Height="64" Width="42">
+                <StackPanel>
+                    <Image Source="../../Images/New.png" />
+                    <TextBlock>Tip</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button VerticalAlignment="Top" Height="64" Width="42">
+                <StackPanel>
+                    <Image Source="../../Images/New.png" />
+                    <TextBlock>Etiketa</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button VerticalAlignment="Top" Height="64" Width="42">
+                <StackPanel>
+                    <Image Source="../../Images/Delete.png" />
+                    <TextBlock>Obrisi</TextBlock>
+                </StackPanel>
+            </Button>
+            <Button VerticalAlignment="Top" Height="64" Width="42">
+                <StackPanel>
+                    <Image Source="../../Images/Find.png" />
+                    <TextBlock>Nađi</TextBlock>
+                </StackPanel>
+            </Button>
+        </Menu>
+        <Canvas Name="kanvas" DockPanel.Dock="Right" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  >
+            
+        </Canvas>
+    </DockPanel>
+</Window>
